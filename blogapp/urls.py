@@ -1,8 +1,4 @@
-# @Time    : 18-6-5 下午2:19
-# @Author  : anhuafeng
-# @Site    :
-# @File    : urls.py
-# @Software: PyCharm
+
 from django.conf.urls import url
 from .views import index,lista1,SearchView,show
 urlpatterns = [

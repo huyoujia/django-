@@ -39,7 +39,7 @@ class Tags(models.Model):
 #博客
 class Post(models.Model):
     user = models.ForeignKey(BlogUser, verbose_name='作者')
-    category = models.ForeignKey(BlogCategory, verbose_name='博客分类', default=None)
+    ategory = models.ForeignKey(BlogCategory, verbose_name='博客分类', default=None)
     tags = models.ManyToManyField(Tags, verbose_name='标签')
     title = models.CharField(verbose_name='标题', max_length=30, null=False)
     content = models.CharField(verbose_name='内容', max_length=4000, null=False)

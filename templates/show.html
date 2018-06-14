@@ -119,14 +119,13 @@
 	  <h3>相关推荐</h3>
 	</div>
 	<ul>
-	  <li><a href="#" title="" >知奇课堂-Python开发课程</a></li>
-	  <li><a href="#" title="" >知奇课堂-Python开发课程</a></li>
-	  <li><a href="#" title="" >知奇课堂-Python开发课程</a></li>
-	  <li><a href="#" title="" >知奇课堂-Python开发课程</a></li>
-	  <li><a href="#" title="" >知奇课堂-Python开发课程</a></li>
-	  <li><a href="#" title="" >知奇课堂-Python开发课程</a></li>
-	  <li><a href="#" title="" >知奇课堂-Python开发课程</a></li>
-	  <li><a href="#" title="" >知奇课堂-Python开发课程</a></li>
+        {% for category in category_list %}
+            <li><a href="#" title="" >{{ category.title }}</a></li>
+        {% endfor %}
+
+{#	  <li><a href="#" title="" >知奇课堂-Python开发课程</a></li>#}
+
+
 	</ul>
   </div>
   <div class="title" id="comment">

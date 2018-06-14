@@ -7,7 +7,6 @@ from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 # 首页
-
 def index(request):
     banner_list = Banner.objects.all()
     # 去数据库里面取出所有　推荐的文章
@@ -15,7 +14,7 @@ def index(request):
     for recoment in recomment_list:
         recoment.content = recoment.content[:100] + '......'
 
-    # 倒叙
+    # 倒序
     post_list = Post.objects.order_by('-pub_date')
     for post in post_list:
         post.content = post.content[:160] + '......'
@@ -159,13 +158,13 @@ class SearchView(View):
             'new_comment_list': new_comment_list,
             'friendlylink_list': friendlylink_list,
             'tags_list': tags_list,
-
         }
 
         return render(request, 'search.html', ccx)
 
 #详情
 def show(request, sh=-1):
+
     cht = int(sh)
     if cht != -1:
         post_list = Post.objects.get(id=cht)
@@ -181,10 +180,18 @@ def show(request, sh=-1):
     #标签
     tag_list = post_list.tags.all()
 
+    #相关推荐 除了本身 推荐这个分类其他的
+    category_list = Post.objects.filter(category=post_list.id)
+    new_comment_lists = []
+    for i in category_list:
+        if i.title != post_list.title:
+            new_comment_lists.append(i.title)
+
     ctx = {
         'post': post_list,
         'new_comment_list': new_comment_list,
         'tag_list': tag_list,
+        'category_list' : new_comment_lists,
 
     }
 
